@@ -9,6 +9,7 @@ import com.proconnect.project.postservice.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+//    @Cacheable
     public PostDto getPostById(Long id) {
         log.info("Getting post of user with id: {}", id);
         Post post=postRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Post not found with id:"+id));
